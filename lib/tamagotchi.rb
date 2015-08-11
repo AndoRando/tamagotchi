@@ -1,8 +1,8 @@
 class Tamagotchi
-  define_method(:initialize) do |name, food_level, sleep_level, activity_level|
+  define_method(:initialize) do |name, food_level, energy_level, activity_level|
     @name = name
     @food_level = food_level
-    @sleep_level = sleep_level
+    @energy_level = energy_level
     @activity_level = activity_level
   end
 
@@ -14,8 +14,8 @@ class Tamagotchi
     @food_level
   end
 
-  define_method(:sleep_level) do
-    @sleep_level
+  define_method(:energy_level) do
+    @energy_level
   end
 
   define_method(:activity_level) do
@@ -23,6 +23,15 @@ class Tamagotchi
   end
 
   define_method(:mortality) do
-    @food_level.>(0)
+    @food_level > 0
+  end
+
+  define_method(:feed_pet) do
+    if @food_level < 90
+      @food_level += 10
+    elsif @food_level >= 90 && @food_level <= 100
+      @food_level = 100
+    end
+
   end
 end
