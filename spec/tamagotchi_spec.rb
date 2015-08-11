@@ -2,6 +2,10 @@ require('rspec')
 require('tamagotchi')
 
 describe(Tamagotchi) do
+  before() do
+    Tamagotchi.clear()
+  end
+
   describe('#initialize') do
     it('sets the name and life levels of a new Tamagotchi') do
       my_pet = Tamagotchi.new("andrew", 100, 100, 100)
@@ -68,6 +72,24 @@ describe(Tamagotchi) do
 
   describe('.all') do
     it('shows all instances of tamagotchis currently saved') do
+      expect(Tamagotchi.all()).to(eq([]))
+    end
+  end
+
+  describe("#save_pet") do
+    it('saves a pet instance to the array of all pets') do
+      test_pet_one = Tamagotchi.new("brennwald", 100, 100, 100)
+      test_pet_one.save_pet()
+      test_pet_two = Tamagotchi.new("dang", 100, 100, 100)
+      test_pet_two.save_pet()
+      expect(Tamagotchi.all()).to(eq([test_pet_one, test_pet_two]))
+    end
+  end
+
+  describe('.clear') do
+    it('clears the array of saved tamagotchis') do
+      Tamagotchi.new("andrew", 100, 100, 100).save_pet()
+      Tamagotchi.clear()
       expect(Tamagotchi.all()).to(eq([]))
     end
   end
