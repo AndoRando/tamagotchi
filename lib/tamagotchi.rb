@@ -1,9 +1,14 @@
 class Tamagotchi
+  @@all_pets = []
   define_method(:initialize) do |name, food_level, energy_level, fitness_level|
     @name = name
     @food_level = food_level
     @energy_level = energy_level
     @fitness_level = fitness_level
+  end
+
+  define_singleton_method(:all) do
+    @@all_pets
   end
 
   define_method(:name) do

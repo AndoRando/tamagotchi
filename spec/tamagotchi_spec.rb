@@ -66,4 +66,9 @@ describe(Tamagotchi) do
     end
   end
 
+  describe('.all') do
+    it('shows all instances of tamagotchis currently saved') do
+      expect(Tamagotchi.all()).to(eq([]))
+    end
+  end
 end
