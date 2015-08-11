@@ -12,10 +12,18 @@ describe(Tamagotchi) do
     end
   end
 
-  # describe(:mortality) do
-  #   it("is dead (false) if food level is 0") do
-  #     test_pet = Tamagotchi.new("andrew")
-  #     expect(test_pet.mortality()).to(eq(false))
-  #   end
-  # end
+  describe(:mortality) do
+    it("is dead (false) if food level is 0") do
+      test_pet = Tamagotchi.new("andrew", 0, 10, 10)
+      expect(test_pet.mortality()).to(eq(false))
+    end
+  end
+
+  describe(:mortality) do
+    it("is alive (true) if food level is above 0") do
+      test_pet = Tamagotchi.new("andrew", 10, 10, 10)
+      expect(test_pet.mortality()).to(eq(true))
+    end
+  end
+
 end
