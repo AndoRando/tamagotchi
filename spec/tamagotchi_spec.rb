@@ -42,13 +42,13 @@ describe(Tamagotchi) do
     end
   end
 
-  # describe('#time_passes') do
-  #   it('decreases the amount of food the Tamagotchi has left by 10') do
-  #     test_pet = Tamagotchi.new("andrew", 100, 100, 100)
-  #     test_pet.time_passes()
-  #     expect(test_pet.food_level()).to(eq(10))
-  #   end
-  # end
+  describe('#time_passes') do
+    it('decreases the amount of food the Tamagotchi has left by 10') do
+      test_pet = Tamagotchi.new("andrew", 100, 100, 100)
+      test_pet.time_passes()
+      expect(test_pet.food_level()).to(eq(90))
+    end
+  end
 
   describe('#exercise_pet') do
     it('increases fitness level by 20') do
@@ -57,4 +57,13 @@ describe(Tamagotchi) do
       expect(test_pet.fitness_level()).to(eq(70))
     end
   end
+
+  describe('#rest_pet') do
+    it('increases sleep level to 100') do
+      test_pet = Tamagotchi.new("andrew", 100, 20, 100)
+      test_pet.rest_pet()
+      expect(test_pet.energy_level()).to(eq(100))
+    end
+  end
+
 end

@@ -26,6 +26,12 @@ class Tamagotchi
     @food_level > 0
   end
 
+  define_method(:time_passes) do
+    @food_level -= 10
+    @energy_level -= 10
+    @fitness_level -= 10
+  end
+
   define_method(:feed_pet) do
     if @food_level < 90
       @food_level += 10
@@ -37,8 +43,13 @@ class Tamagotchi
   define_method(:exercise_pet) do
     if @fitness_level < 90
       @fitness_level += 20
-    elsif @food_level >= 90 && @food_level <= 100
+    elsif @fitness_level >= 90 && @fitness_level <= 100
       @fitness_level = 100
     end
   end
+
+  define_method(:rest_pet) do
+    @energy_level = 100
+  end
+
 end
